@@ -22,17 +22,17 @@ class Dashboard extends StatelessWidget {
       appBar: AppBar(
         title: Text(appTitle),
       ),
-          body: CarouselSlider( // TODO : carousel from https://pub.dev/packages/carousel_slider
+          body: CarouselSlider( // TODO : carousel from https://pub.dev/packages/carousel_slider  OR https://pub.dev/packages/carousel_pro
             height: 400.0,
-            items: [1,2,3,4,5].map((i) {
+            items: [1,2,3,4].map((i) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
                       width: MediaQuery.of(context).size.width,
                       margin: EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: BoxDecoration(
-                          color: Colors.amber
-                      ),
+//                      decoration: BoxDecoration(
+//                          color: Colors.amber
+//                      ),
                       child: Text('text $i', style: TextStyle(fontSize: 16.0),)
                   );
                 },

@@ -32,7 +32,7 @@ class Profile extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
-              backgroundImage: new AssetImage('assets/images/logo.jpg'),
+              backgroundImage: new AssetImage('assets/images/person.jpg'),
               minRadius: 30,
               maxRadius: 60,
             ),
