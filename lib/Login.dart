@@ -84,7 +84,12 @@ class LoginState extends State<Login> {
                       ),
                       keyboardType: TextInputType.number,
                       validator: (String value) {
-                        return value.isEmpty ? 'Password Missing' : null;
+                        if(value.isEmpty){
+                          return 'Password Missing';
+                        }else if(value.length < 4){
+                          return 'Password should be greater than 4 digits';
+                        }
+                        return null;
                       },
                     ),
                   ),
