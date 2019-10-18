@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/splashscreen.dart';
 
-import 'MyCustomForm.dart';
+import 'Login.dart';
 
 
 void main() => runApp(MyApp());
@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      home: new SplashScreen(),
-      routes: <String, WidgetBuilder>{
-        '/HomeScreen': (BuildContext context) => new MyCustomForm()
-      },
+      home: new Login(),
+     /* routes: <String, WidgetBuilder>{
+        '/HomeScreen': (BuildContext context) => new Login()
+      },*/
     );
   }
 }

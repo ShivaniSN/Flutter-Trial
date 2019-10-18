@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Dashboard.dart';
 
 import 'splashscreen.dart';
 
 // Create a Form widget.
-class MyCustomForm extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
+  LoginState createState() {
+    return LoginState();
   }
 }
 
 // Create a corresponding State class.
 // This class holds data related to the form.
-class MyCustomFormState extends State<MyCustomForm> {
+class LoginState extends State<Login> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
   // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
+  // not a GlobalKey<LoginState>.
   final appTitle = 'First Flutter App';
   final _formKey = GlobalKey<FormState>();
-  bool _autoValidate = false;
-  final TextEditingController _controllerUsername = TextEditingController();
-  final TextEditingController _controllerPassword = TextEditingController();
+  String loginName;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,6 @@ class MyCustomFormState extends State<MyCustomForm> {
         title: Text(appTitle),
       ),
       body: Form(
-          autovalidate: _autoValidate,
           key: _formKey,
           child: new SingleChildScrollView(
               child: new Column(
@@ -64,20 +62,12 @@ class MyCustomFormState extends State<MyCustomForm> {
                           color: Colors.blue,
                         ),
                       ),
-                      controller: _controllerUsername,
                       keyboardType: TextInputType.text,
                       validator: (String value) {
-                        return value.contains('') ? 'Username Missing' : '';
-                      },
-                      onFieldSubmitted: (String value) {
-                        if (_formKey.currentState.validate()) {
-                          _formKey.currentState.save();
-                          Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => new SplashScreen()),
-                          );
+                        if(value.isNotEmpty){
+                          loginName = value;
                         }
+                        return value.isEmpty ? 'Username Missing' : null;
                       },
                     ),
                   ),
@@ -92,20 +82,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                           color: Colors.blue,
                         ),
                       ),
-                      controller: _controllerPassword,
                       keyboardType: TextInputType.number,
                       validator: (String value) {
-                        return value.contains('') ? 'Password Missing' : '';
-                      },
-                      onFieldSubmitted: (String value) {
-                        if (_formKey.currentState.validate()) {
-                          _formKey.currentState.save();
-                          Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => new SplashScreen()),
-                          );
-                        }
+                        return value.isEmpty ? 'Password Missing' : null;
                       },
                     ),
                   ),
@@ -116,18 +95,16 @@ class MyCustomFormState extends State<MyCustomForm> {
                         color: Colors.blue,
                         textColor: Colors.white,
                         onPressed: () {
-                          LinearProgressIndicator(
-                            value: 2000,
-                          );
                           if (_formKey.currentState.validate()) {
-                            _formKey.currentState.save();
-                            Navigator.push(
+                           // _formKey.currentState.save();
+                            Scaffold
+                                .of(context)
+                                .showSnackBar(SnackBar(content: Text('Processing Data')));
+                            Navigator.pushReplacement(
                               context,
                               new MaterialPageRoute(
-                                  builder: (context) => new SplashScreen()),
+                                  builder: (context) => new Dashboard(loginName)),
                             );
-                          } else {
-                            _autoValidate = true;
                           }
                         },
                         child: Text(
