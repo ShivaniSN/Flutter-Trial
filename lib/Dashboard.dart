@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/ChangePassword.dart';
 
 import 'Profile.dart';
 
@@ -117,6 +118,13 @@ class Dashboard extends StatelessWidget {
                 Icons.lock_outline,
                 color: Colors.blue,
               ),
+              onTap: (){
+                Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => new ChangePassword(userName)),
+                );
+              },
             ),
             ListTile(
               title: Text(
