@@ -21,7 +21,6 @@ class ChangePasswordState extends State<ChangePassword>{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Scaffold(
         appBar: AppBar(
           title: Text(appTitle),
@@ -31,11 +30,11 @@ class ChangePasswordState extends State<ChangePassword>{
                 color: Colors.white,
               ),
               onPressed: () {
-//                Navigator.pushReplacement(
-//                  context,
-//                  new MaterialPageRoute(
-//                      builder: (context) => new Dashboard(ChangePassword.userName)),
-//                );
+                Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => new Dashboard('')),
+                );
               }),
         ),
         body: Form(
@@ -124,11 +123,11 @@ class ChangePasswordState extends State<ChangePassword>{
                               Scaffold
                                   .of(context)
                                   .showSnackBar(SnackBar(content: Text('Processing Data')));
-//                              Navigator.pushReplacement(
-//                                context,
-//                                new MaterialPageRoute(
-//                                    builder: (context) => new Dashboard(loginName)),
-//                              );
+                              Navigator.pushReplacement(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) => new Dashboard('')),
+                              );
                             }
                           },
                           child: Text(

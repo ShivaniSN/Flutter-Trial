@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/ChangePassword.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 import 'Profile.dart';
 
@@ -15,39 +16,29 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return DefaultTabController(
         length: 3,
         child: new Scaffold(
       appBar: AppBar(
         title: Text(appTitle),
-        bottom: TabBar(
-          tabs: [
-            Tab(icon: Icon(Icons.directions_car)),
-            Tab(icon: Icon(Icons.directions_transit)),
-            Tab(icon: Icon(Icons.directions_bike)),
-          ],
-        ),
       ),
-      body:
-         /* code to add list [listview/recyclerview]
-          ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: entries.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 50,
-                  color: Colors.blue[colorCodes[index]],
-                  child: Center(child: Text('${entries[index]}')),
-                );
-              }),*/
-      TabBarView(
-        children: [
-          Icon(Icons.directions_car),
-          Icon(Icons.directions_transit),
-          Icon(Icons.directions_bike),
-        ],
-      ),
+          body: CarouselSlider( // TODO : carousel from https://pub.dev/packages/carousel_slider
+            height: 400.0,
+            items: [1,2,3,4,5].map((i) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.symmetric(horizontal: 5.0),
+                      decoration: BoxDecoration(
+                          color: Colors.amber
+                      ),
+                      child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+                  );
+                },
+              );
+            }).toList(),
+          ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
