@@ -1,6 +1,6 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/ChangePassword.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 import 'Profile.dart';
 
@@ -22,23 +22,18 @@ class Dashboard extends StatelessWidget {
       appBar: AppBar(
         title: Text(appTitle),
       ),
-          body: CarouselSlider( // TODO : carousel from https://pub.dev/packages/carousel_slider  OR https://pub.dev/packages/carousel_pro
-            height: 400.0,
-            items: [1,2,3,4].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-//                      decoration: BoxDecoration(
-//                          color: Colors.amber
-//                      ),
-                      child: Text('text $i', style: TextStyle(fontSize: 16.0),)
-                  );
-                },
-              );
-            }).toList(),
-          ),
+          body:
+          SizedBox(// TODO : carousel from https://pub.dev/packages/carousel_slider  OR https://pub.dev/packages/carousel_pro
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+              child: Carousel(
+                images: [
+                  ExactAssetImage('assets/images/light.jpg'),
+                  ExactAssetImage('assets/images/talin.jpg'),
+                  ExactAssetImage('assets/images/balloon.jpeg'),
+                  ExactAssetImage('assets/images/beach.jpeg')
+                ],
+              )),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,

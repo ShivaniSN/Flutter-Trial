@@ -7,7 +7,7 @@ class ChangePassword extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return ChangePasswordState();
+    return _ChangePasswordState();
   }
 
   ChangePassword(String loginName) {
@@ -15,7 +15,7 @@ class ChangePassword extends StatefulWidget{
   }
 }
 
-class ChangePasswordState extends State<ChangePassword>{
+class _ChangePasswordState extends State<ChangePassword>{
   final appTitle = 'Change Password';
   final _formKey = GlobalKey<FormState>();
 
