@@ -1,5 +1,6 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Category.dart';
 import 'package:flutter_app/ChangePassword.dart';
 
 import 'Profile.dart';
@@ -7,7 +8,7 @@ import 'Profile.dart';
 class Dashboard extends StatelessWidget {
   final String userName;
   final appTitle = 'First Flutter App';
-  final List<String> entries = <String>['Profile', 'Change Password', 'Logout'];
+  final List<String> entries = <String>['Profile','Route', 'Change Password', 'Logout'];
   final List<int> colorCodes = <int>[100, 300, 500];
 
   Dashboard(this.userName);
@@ -86,6 +87,27 @@ class Dashboard extends StatelessWidget {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => new Profile(userName)),
+                );
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Route',
+                style: TextStyle(
+//                    backgroundColor: Colors.blue.withOpacity(0.6),
+                    fontSize: 16,
+                    fontStyle: FontStyle.normal,
+                    color: Colors.blue),
+              ),
+              leading: Icon(
+                Icons.card_travel,
+                color: Colors.blue,
+              ),
+              onTap: (){
+                Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => new Category(userName)),
                 );
               },
             ),
