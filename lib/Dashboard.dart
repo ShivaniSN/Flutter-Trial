@@ -5,14 +5,12 @@ import 'package:flutter_app/ChangePassword.dart';
 import 'Profile.dart';
 
 class Dashboard extends StatelessWidget {
-  String userName;
+  final String userName;
   final appTitle = 'First Flutter App';
   final List<String> entries = <String>['Profile', 'Change Password', 'Logout'];
   final List<int> colorCodes = <int>[100, 300, 500];
 
-  Dashboard(String loginName) {
-    userName = loginName;
-  }
+  Dashboard(this.userName);
 
   @override
   Widget build(BuildContext context) {

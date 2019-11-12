@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Dashboard.dart';
+import 'package:flutter_app/EditTextWidget.dart';
 
 // Create a Form widget.
 class Login extends StatefulWidget {
@@ -20,8 +21,9 @@ class _LoginState extends State<Login> {
   final appTitle = 'First Flutter App';
   final _formKey = GlobalKey<FormState>();
   String loginName;
+  var iconList = [Icons.person,Icons.lock];
 
-  String validateUserInputUserName(String value) {
+  String _validateUserInputUserName(String value) {
     if (value.isNotEmpty) {
       loginName = value;
 //      return loginName;
@@ -33,7 +35,7 @@ class _LoginState extends State<Login> {
     }
   }
 
-  String validateUserInputPassword(String value) {
+  String _validateUserInputPassword(String value) {
     if (value.isEmpty) {
       return 'Password Missing';
     } else if (value.length < 4) {
@@ -71,42 +73,10 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.bold,
                           color: Colors.blue),
                     )),
+                EditTextWidget('Enter Username','What is your login username ?',iconList[0],_validateUserInputUserName),
+                EditTextWidget('Enter Password','What is your login password ?',iconList[1],_validateUserInputPassword),
                 Padding(
-                  padding: EdgeInsetsDirectional.only(start: 20.0, end: 20.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Enter Username',
-                      hintText: 'What is your login username ?',
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.blue,
-                      ),
-                    ),
-                    keyboardType: TextInputType.text,
-                    validator: (String value) {
-                      return validateUserInputUserName(value);
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(start: 20.0, end: 20.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Enter Password',
-                      hintText: 'What is your login password ?',
-                      icon: Icon(
-                        Icons.lock,
-                        color: Colors.blue,
-                      ),
-                    ),
-                    keyboardType: TextInputType.number,
-                    validator: (String value) {
-                      return validateUserInputPassword(value);
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(top: 20.0),
+                  padding: EdgeInsetsDirectional.only(top: 80.0),
                   child: Builder(
                     builder: (context) => RaisedButton(
                       color: Colors.blue,

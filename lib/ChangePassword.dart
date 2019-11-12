@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Dashboard.dart';
 
+import 'EditTextWidget.dart';
+
 class ChangePassword extends StatefulWidget{
-  String userName;
+  final String userName;
 
   @override
   State<StatefulWidget> createState() {
@@ -10,20 +12,29 @@ class ChangePassword extends StatefulWidget{
     return _ChangePasswordState();
   }
 
-  ChangePassword(String loginName) {
-    userName = loginName;
-  }
+  ChangePassword(this.userName);
 }
 
 class _ChangePasswordState extends State<ChangePassword>{
-  final appTitle = 'Change Password';
+  final _appTitle = 'Change Password';
   final _formKey = GlobalKey<FormState>();
+  var iconList = [Icons.lock,Icons.lock,Icons.lock];
+
+  String _validateUserInputPassword(String value) {
+    if (value.isEmpty) {
+      return 'Password Missing';
+    } else if (value.length < 4) {
+      return 'Password should be greater than 4 digits';
+    }else{
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
-          title: Text(appTitle),
+          title: Text(_appTitle),
           leading: new IconButton(
               icon: new Icon(
                 Icons.arrow_back,
@@ -47,72 +58,11 @@ class _ChangePasswordState extends State<ChangePassword>{
                         image: new AssetImage('assets/images/flutter.jpg'),
                         width: 200.0,
                         height: 200.0),
+                    EditTextWidget('Old Password','What is your old password ?',iconList[0],_validateUserInputPassword),
+                    EditTextWidget('New Password','What is your new password ?',iconList[1],_validateUserInputPassword),
+                    EditTextWidget('Confirm Password','What is your confirm password ?',iconList[2],_validateUserInputPassword),
                     Padding(
-                      padding: EdgeInsetsDirectional.only(start: 20.0, end: 20.0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Old Password',
-                          hintText: 'What is your old password ?',
-                          icon: Icon(
-                            Icons.person,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                        validator: (String value) {
-                          if(value.isNotEmpty){
-//                            loginName = value;
-                          }
-                          return value.isEmpty ? 'Old Password Missing' : null;
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(start: 20.0, end: 20.0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'New Password',
-                          hintText: 'What is your new password ?',
-                          icon: Icon(
-                            Icons.lock,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        keyboardType: TextInputType.number,
-                        validator: (String value) {
-                          if(value.isEmpty){
-                            return 'Password Missing';
-                          }else if(value.length < 4){
-                            return 'Password should be greater than 4 digits';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(start: 20.0, end: 20.0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Confirm Password',
-                          hintText: 'What is your confirm password ?',
-                          icon: Icon(
-                            Icons.lock,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        keyboardType: TextInputType.number,
-                        validator: (String value) {
-                          if(value.isEmpty){
-                            return 'Password Missing';
-                          }else if(value.length < 4){
-                            return 'Password should be greater than 4 digits';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(top: 20.0),
+                      padding: EdgeInsetsDirectional.only(top: 50.0),
                       child: Builder(
                         builder: (context) => RaisedButton(
                           color: Colors.blue,
