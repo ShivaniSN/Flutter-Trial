@@ -1,4 +1,5 @@
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:flurry_analytics/flurry_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/Category.dart';
@@ -85,6 +86,7 @@ class Dashboard extends StatelessWidget {
                 color: Colors.blue,
               ),
               onTap: (){
+                FlurryAnalytics.logEvent("Profile opened");
                 Navigator.pushReplacement(
                   context,
                   new MaterialPageRoute(
@@ -106,6 +108,7 @@ class Dashboard extends StatelessWidget {
                 color: Colors.blue,
               ),
               onTap: (){
+                FlurryAnalytics.logEvent("Route opened");
                 Navigator.pushReplacement(
                   context,
                   new MaterialPageRoute(
@@ -127,6 +130,7 @@ class Dashboard extends StatelessWidget {
                 color: Colors.blue,
               ),
               onTap: (){
+                FlurryAnalytics.logEvent("Change Password opened");
                 Navigator.pushReplacement(
                   context,
                   new MaterialPageRoute(
@@ -148,6 +152,7 @@ class Dashboard extends StatelessWidget {
                 color: Colors.blue,
               ),
               onTap: (){
+                FlurryAnalytics.logEvent("Logged out");
                 Navigator.pushReplacement(
                   context,
                   new MaterialPageRoute(

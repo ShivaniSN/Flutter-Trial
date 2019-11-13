@@ -11,7 +11,6 @@ class EditTextWidget extends StatelessWidget {
     if (hintText.contains("password")) {
       return TextInputType.number;
     }
-
     return TextInputType.text;
   }
 

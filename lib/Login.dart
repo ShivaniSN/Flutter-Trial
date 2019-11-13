@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Dashboard.dart';
 import 'package:flutter_app/EditTextWidget.dart';
+import 'package:flurry_analytics/flurry_analytics.dart';
 
 // Create a Form widget.
 class Login extends StatefulWidget {
@@ -84,6 +85,7 @@ class _LoginState extends State<Login> {
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           // _formKey.currentState.save();
+                          FlurryAnalytics.logEvent("logged in by : "+ loginName);
                           Scaffold.of(context).showSnackBar(
                               SnackBar(content: Text('Processing Data')));
                           Navigator.pushReplacement(
