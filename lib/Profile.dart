@@ -4,7 +4,7 @@ import 'package:flutter_app/EditTextWidget.dart';
 
 class Profile extends StatelessWidget {
   String userName;
-  var iconList = [Icons.person,Icons.mobile_screen_share];
+  var iconList = [Icons.person, Icons.mobile_screen_share];
 
   Profile(String loginName) {
     userName = loginName;
@@ -29,130 +29,139 @@ class Profile extends StatelessWidget {
             }),
         title: Text('Profile'),
       ),
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: new AssetImage('assets/images/talin.jpg'),
-              minRadius: 30,
-              maxRadius: 60,
-            ),
-          ),
-          Center(
-            child: Text(
-              userName,
-              style: TextStyle(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Card(
+          elevation: 10.0,
+          child: ListView(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: CircleAvatar(
+                  backgroundImage: new AssetImage('assets/images/talin.jpg'),
+                  minRadius: 30,
+                  maxRadius: 60,
+                ),
+              ),
+              Center(
+                child: Text(
+                  userName,
+                  style: TextStyle(
 //                    backgroundColor: Colors.blue.withOpacity(0.6),
-                  fontSize: 30,
-                  fontStyle: FontStyle.normal,
-                  color: Colors.blue),
-            ),
-          ),
-          Row(
-            children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(
-                    'Name : ',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.normal,
-                        color: Colors.black54),
-                  )),
-              Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(
-                    'Talin Stalingard',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ))
+                      fontSize: 30,
+                      fontStyle: FontStyle.normal,
+                      color: Colors.blue),
+                ),
+              ),
+              Row(
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Name : ',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            color: Colors.black54),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Talin Stalingard',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ))
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Role : ',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            color: Colors.black54),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Android Devceloper',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ))
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Mobile : ',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            color: Colors.black54),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        '9999999999',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ))
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'City : ',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            color: Colors.black54),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Pune',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ))
+                ],
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 90.0,right: 20.0),
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      _onButtonPressed(context);
+                    },
+                    icon: Icon(Icons.edit),
+                    label: Text("Edit"),
+                    elevation: 10.0,
+                  ),
+                ),
+              ),
             ],
           ),
-          Row(
-            children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(
-                    'Role : ',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.normal,
-                        color: Colors.black54),
-                  )),
-              Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(
-                    'Android Devceloper',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ))
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(
-                    'Mobile : ',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.normal,
-                        color: Colors.black54),
-                  )),
-              Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(
-                    '9999999999',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ))
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(
-                    'City : ',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.normal,
-                        color: Colors.black54),
-                  )),
-              Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(
-                    'Pune',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ))
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.all(90.0),
-            child: FloatingActionButton.extended(
-              onPressed: () {
-                _onButtonPressed(context);
-              },
-              icon: Icon(Icons.edit),
-              label: Text("Edit"),
-              elevation: 10.0,
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
@@ -167,9 +176,7 @@ class Profile extends StatelessWidget {
             child: Container(
               child: _buildBottomNavigationMenu(),
               decoration: BoxDecoration(
-                color: Theme
-                    .of(context)
-                    .canvasColor,
+                color: Theme.of(context).canvasColor,
                 borderRadius: BorderRadius.only(
                   topLeft: const Radius.circular(10),
                   topRight: const Radius.circular(10),
@@ -183,8 +190,10 @@ class Profile extends StatelessWidget {
   Column _buildBottomNavigationMenu() {
     return Column(
       children: <Widget>[
-        EditTextWidget('Enter Name','What is your name ?',iconList[0],_validateUserInputUserName),
-        EditTextWidget('Enter Mobile','What is your mobile number ?',iconList[1],_validateUserInputPassword),
+        EditTextWidget('Enter Name', 'What is your name ?', iconList[0],
+            _validateUserInputUserName),
+        EditTextWidget('Enter Mobile', 'What is your mobile number ?',
+            iconList[1], _validateUserInputPassword),
         Padding(
           padding: EdgeInsetsDirectional.only(top: 40.0),
           child: Builder(
@@ -221,7 +230,7 @@ class Profile extends StatelessWidget {
     }
     if (value.isEmpty) {
       return 'Username Missing';
-    }else{
+    } else {
       return null;
     }
   }
@@ -231,7 +240,7 @@ class Profile extends StatelessWidget {
       return 'Mobile Missing';
     } else if (value.length != 10) {
       return 'Mobile should be of 10 digits';
-    }else{
+    } else {
       return null;
     }
   }

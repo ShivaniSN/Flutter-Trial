@@ -1,7 +1,9 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app/Category.dart';
 import 'package:flutter_app/ChangePassword.dart';
+import 'package:flutter_app/Login.dart';
 
 import 'Profile.dart';
 
@@ -145,6 +147,14 @@ class Dashboard extends StatelessWidget {
                 Icons.exit_to_app,
                 color: Colors.blue,
               ),
+              onTap: (){
+                Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => new Login()),
+                );
+              }
+                  //to exit the app => => => => => => SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop'),
             )
           ],
         ),
